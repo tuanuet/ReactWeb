@@ -1,0 +1,23 @@
+.detail-header{
+  padding: 10px 0px 10px 0px;
+}
+.detail-body{
+  padding: 10px 0px 10px 0px;
+
+}
+.detail-body-des{
+  padding-top: 20px;
+}
+.detail-chaper{
+  padding-left: 20px;
+}
+.detail-chaper-content{
+  padding-left: 10px;
+}
+.detail-chaper-content-item{
+  padding: 5px 0px;
+  font-size: 1.2em;
+}
+.detail-body-img-name{
+  text-align:center;
+}

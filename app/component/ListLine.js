@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 const {addItem, delItem} = require('../action/list-action');
 
+@connect((state)=> { return {list : state.list}})
 class Line extends React.Component{
   render(){
     return(
@@ -9,7 +10,7 @@ class Line extends React.Component{
     )
   }
 }
-
+@connect((state)=>{return {lines : state.list}})
 class ListLine extends React.Component {
   addName(e){
     var { dispatch } = this.props;
@@ -33,6 +34,4 @@ class ListLine extends React.Component {
   }
 }
 
-module.exports = connect((state)=>{
-  return {lines : state.list}
-})(ListLine);
+module.exports = (ListLine);

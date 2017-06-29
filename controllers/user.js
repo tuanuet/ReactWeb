@@ -28,21 +28,34 @@ exports.postLogin = (req, res, next) => {
 
   const errors = req.validationErrors();
 
+
   if (errors) {
-    req.flash('errors', errors);
-    return res.redirect('/login');
+    console.log(errors);
+    return res.json(errors);
+
   }
 
-  passport.authenticate('local', (err, user, info) => {
-    if (err) { return next(err); }
-    if (!user) {
-      req.flash('errors', info);
-      return res.redirect('/login');
+  passport.authenticate('local', (err, user, token) => {
+    if (err) {
+      return res.json(err)
     }
+    if (!user) {
+      return res.json({
+        msg : "Please check email and password",
+        isSuccess : false
+      })
+    }
+
     req.logIn(user, (err) => {
-      if (err) { return next(err); }
-      req.flash('success', { msg: 'Success! You are logged in.' });
-      res.redirect(req.session.returnTo || '/');
+      if (err) {
+        return res.json(err)
+
+      }
+      return res.json({
+        msg: 'Success! You are logged in.',
+        token,
+        isSuccess : true
+      })
     });
   })(req, res, next);
 };
@@ -53,7 +66,10 @@ exports.postLogin = (req, res, next) => {
  */
 exports.logout = (req, res) => {
   req.logout();
-  res.redirect('/');
+  res.json({
+    msg: 'Success! You are logged out.',
+    isSuccess : true
+  });
 };
 
 /**
@@ -82,8 +98,8 @@ exports.postSignup = (req, res, next) => {
   const errors = req.validationErrors();
 
   if (errors) {
-    req.flash('errors', errors);
-    return res.redirect('/signup');
+
+    return res.json(errors);
   }
 
   const user = new User({
@@ -94,16 +110,17 @@ exports.postSignup = (req, res, next) => {
   User.findOne({ email: req.body.email }, (err, existingUser) => {
     if (err) { return next(err); }
     if (existingUser) {
-      req.flash('errors', { msg: 'Account with that email address already exists.' });
-      return res.redirect('/signup');
+      res.json({ msg: 'Account with that email address already exists.' , isSuccess : false});
+      return;
     }
     user.save((err) => {
       if (err) { return next(err); }
       req.logIn(user, (err) => {
         if (err) {
-          return next(err);
+          return res.json(err);
         }
-        res.redirect('/');
+        res.json({ msg: 'Account success Create.' , isSuccess : true});
+        return;
       });
     });
   });
@@ -114,9 +131,7 @@ exports.postSignup = (req, res, next) => {
  * Profile page.
  */
 exports.getAccount = (req, res) => {
-  res.render('account/profile', {
-    title: 'Account Management'
-  });
+  res.json(req.user)
 };
 
 /**
