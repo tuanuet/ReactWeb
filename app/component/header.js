@@ -1,14 +1,15 @@
 /**
  * Created by ndthu on 6/30/2017.
  */
- import React from 'react'
- import {  NavLink } from 'react-router-dom'
- import request from 'superagent'
- import { connect } from 'react-redux'
- import { isAuthencation ,isNotAuthencation} from '../action/authenticate'
+import React from 'react'
+import {  NavLink } from 'react-router-dom'
+import request from 'superagent'
+import { connect } from 'react-redux'
+import { isAuthencation ,isNotAuthencation} from '../action/authenticate'
 
 @connect((state)=> { return {}})
 class Header extends React.Component{
+
   componentWillMount(){
     request
       .get('/authentication')
@@ -24,11 +25,16 @@ class Header extends React.Component{
                 <nav className="navbar navbar-default">
                     <div className="container-fluid">
                         <div className="navbar-header">
+                            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                <span className="icon-bar"></span>
+                                <span className="icon-bar"></span>
+                                <span className="icon-bar"></span>
+                            </button>
                             <NavLink className="navbar-brand" to="/">Truyện Nhạt</NavLink>
                         </div>
                         <div className="collapse navbar-collapse" id="myNavbar">
                             <ul className="nav navbar-nav">
-                                <li className="active"><a href="#">Trang chủ</a></li>
+                                <li><NavLink activeClassName="active" to="/">Trang chủ</NavLink></li>
                                 <li className="dropdown">
                                     <a className="dropdown-toggle" data-toggle="dropdown" href="#">Thể loại <span className="caret"></span></a>
                                     <ul className="dropdown-menu">

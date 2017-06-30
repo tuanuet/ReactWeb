@@ -4,10 +4,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import '../../public/css/homepage.css';
-import logo from '../../public/assets/image.jpg';
-import Header from './header.jsx';
-import Footer from './footer.jsx';
-
 
 function Story(props){
     return(
@@ -49,8 +45,8 @@ function Title(props){
 
 function StoryList(props){
 
-    let arrObj = props.stories.map((story) => {
-        return <Story logo={logo} storyName = {story} />
+    let arrObj = props.stories.map((story,i) => {
+        return <Story key={i} storyName = {story} />
     });
     if(arrObj.length > 5){
         arrObj.length = 4;
@@ -101,15 +97,13 @@ class Homepage extends React.Component{
             return <div key = {index}><StoryListWithTitle title={category.title} stories={category.stories}/> <hr/></div>
         });
         return(
-            <div className="container1">
-                <Header/>
+            <div className="container">
                 <div className="container">
                     <div className="wrapper">
                         <SearchForm/>
                         {array}
                     </div>
                 </div>
-                <Footer />
             </div>
 
         )
