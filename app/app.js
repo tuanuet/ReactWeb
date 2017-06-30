@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import ListLine from './component/ListLine'
+import Homepage from './component/homepage'
 const { Provider } = require('react-redux')
 import store from './store'
 import Login from './component/login'
@@ -16,7 +17,7 @@ class App extends React.Component {
   render(){
     return(
       <div className="container darktheme">
-        <ListLine />
+        <Homepage />
       </div>
     )
   }
