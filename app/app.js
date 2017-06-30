@@ -21,8 +21,6 @@ ReactDOM.render(
         <div>
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
-          <Route path="/listline" component={ListLine} />
-          <Route path="/detailstory" component={DetailStory} />
         </div>
       </Layout>
      </Router>
