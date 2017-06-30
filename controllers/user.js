@@ -35,7 +35,7 @@ exports.postLogin = (req, res, next) => {
 
   }
 
-  passport.authenticate('local', (err, user, token) => {
+  passport.authenticate('local', (err, user) => {
     if (err) {
       return res.json(err)
     }
@@ -53,13 +53,27 @@ exports.postLogin = (req, res, next) => {
       }
       return res.json({
         msg: 'Success! You are logged in.',
-        token,
         isSuccess : true
       })
     });
   })(req, res, next);
 };
-
+/**
+  * Get /authenticate
+  */
+exports.isAuthenticated = (req,res) => {
+  if(req.isAuthenticated()){
+    return res.json({
+      isSuccess : true,
+      msg : "you are login",
+      account : req.user
+    })
+  }
+  return res.json({
+    msg : " You not login, please login",
+    isSuccess : false
+  })
+};
 /**
  * GET /logout
  * Log out.

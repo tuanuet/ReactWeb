@@ -41,12 +41,13 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1",
     "redux": "^3.7.1",
     "request": "^2.78.0",
     "stripe": "^4.12.0",
     "superagent": "^3.5.2",
-    "validator": "^7.0.0",
-    "webpack": "^3.0.0"
+    "validator": "^7.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
@@ -67,7 +68,8 @@
     "mocha": "^3.1.2",
     "script-loader": "^0.7.0",
     "style-loader": "^0.18.2",
-    "url-loader": "^0.5.9"
+    "url-loader": "^0.5.9",
+    "webpack": "^3.0.0"
   },
   "eslintConfig": {
     "extends": "airbnb-base",

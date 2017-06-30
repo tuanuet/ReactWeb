@@ -1,6 +1,6 @@
 import React from 'react'
 const request = require('superagent');
-
+import { connect } from 'react-redux'
 function PageHeader() {
   return(
     <div className="page-header col-sm-offset-3">
@@ -83,10 +83,13 @@ class  SignInWith extends React.Component {
   }
 }
 
-
+@connect((state)=>{return {auth : state.auth}})
 class Login extends React.Component{
   render(){
-    return(
+    const htmAuth = (
+      <div>You are login</div>
+    )
+    const htmUnAuth = (
       <div>
         <PageHeader />
         <form className="form-horizontal" action="#">
@@ -96,6 +99,7 @@ class Login extends React.Component{
         </form>
       </div>
     )
+    return this.props.auth ? htmAuth : htmUnAuth
   }
 }
 export default Login

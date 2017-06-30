@@ -97,16 +97,14 @@ app.get('/signup', userController.getSignup);
 app.post('/signup', userController.postSignup);
 app.get('/contact', contactController.getContact);
 app.post('/contact', contactController.postContact);
-app.get('/account', passportConfig.isAuthenticated, userController.getAccount);
+app.get('/account',passportConfig.isAuthenticated, userController.getAccount);
+app.get('/authentication', passportConfig.isAuthenticated, userController.isAuthenticated);
 app.post('/account/profile', passportConfig.isAuthenticated, userController.postUpdateProfile);
 app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
 
 
-/**
- * OAuth authentication routes. (Sign in)
- */
 app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email', 'public_profile'] }));
 app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/failurelogin' }), (req, res) => {
   res.redirect('/');
@@ -116,7 +114,7 @@ app.get('/auth/google/callback', passport.authenticate('google', { failureRedire
   res.redirect('/');
 });
 
-app.get('/failurelogin',(req,res)=>{
+app.get('/#/login',(req,res)=>{
   res.json({
     isSuccess : false,
     msg : "You can't not login! Please check email and password"
