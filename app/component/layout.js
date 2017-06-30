@@ -1,5 +1,5 @@
 import React from 'react'
-import NavBar from './navbar'
+import NavBar from './header'
 import Footer from './footer'
 class Layout extends React.Component {
   render(){
