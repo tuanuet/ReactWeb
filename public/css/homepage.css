@@ -27,8 +27,8 @@ html, body {
 .navbar-brand{
     color: black!important;
 }
-.navbar a:hover, li.active a{
-    color: red!important;
+.navbar a:hover, li a.active{
+    color: #000!important;
 }
 /*
 * navigation
@@ -45,7 +45,7 @@ nav * {
     box-shadow: 0 8px 15px rgba(0,0,0,0.19), 0 4px 4px rgba(0,0,0,0.23);
 }
 
-.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{
+.navbar-inverse .navbar-nav a.active, .navbar-inverse .navbar-nav a.active:focus, .navbar-inverse .navbar-nav a.active:hover{
     background-color: #dfe3ee;
     color: black;
 }

@@ -7,7 +7,7 @@ import Login from './component/login'
 import DetailStory from './component/detailstory'
 import { HashRouter as Router, Route, Link }  from 'react-router-dom'
 import Layout from './component/layout'
-import Home from './component/home'
+import Home from './component/homepage'
 
 import '../public/css/main.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -21,6 +21,7 @@ ReactDOM.render(
         <div>
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
+          <Route path="/detailstory/:id" component={DetailStory} />
         </div>
       </Layout>
      </Router>

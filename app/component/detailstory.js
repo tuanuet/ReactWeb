@@ -1,6 +1,6 @@
 import React from 'react'
 import '../../public/css/detailstory.css'
-
+import request from 'superagent'
 
 function DetailBodyImageName() {
   return(
@@ -9,6 +9,7 @@ function DetailBodyImageName() {
     </div>
   )
 }
+
 class DetailBodyImage extends React.Component{
   render(){
     return(
@@ -48,11 +49,13 @@ class DetailBodyDescription extends React.Component{
     )
   }
 }
+
 function Clearfix() {
   return (
     <div className="clearfix"></div>
   )
 }
+
 class DetailBody extends React.Component{
   render(){
     return(
@@ -98,7 +101,12 @@ class DetailChapter extends React.Component{
 }
 
 class DetailStory extends React.Component {
+  componentWillMount(){
+    let { match } =this.props
+    request.get()
+  }
   render(){
+
     return(
       <div>
         <DetailBody />
