@@ -2,14 +2,14 @@
  * Created by thuannd on 02/07/2017.
  */
 import React from 'react';
-
+import {Link } from 'react-router-dom'
 //1 truyen
 function Story(props){
     return(
 
         <div className="card">
             <div className="card-thumb">
-                <a href="book-info.html"><img className="thumb" src={props.logo} alt="Tot-to-chan"/></a>
+                <a href="book-info.html"><img className="thumb" src='http://t0.gstatic.com/images?q=tbn:ANd9GcQhYjUIu2o5v5u3rfJpCq5Cz0Q9WK--XdYxai_N2d0ImohPiIOp' alt="Tot-to-chan"/></a>
             </div>
 
             <h1><a href="">Totto-chan</a></h1>
@@ -23,7 +23,7 @@ function Story(props){
 function SeeMore(props){
     return(
         <div className="card">
-            <div className="card-see-more"><button className="btn btn-success see-more" href="">SEE MORE >>></button></div>
+            <div className="card-see-more"><Link className="btn btn-success see-more" to={`/truyen/${props.name}`}>SEE MORE >>></Link></div>
         </div>
     )
 }
@@ -45,7 +45,7 @@ function StoryList(props){
     if(!props.full) {
         if (arrObj.length > 5) {
             arrObj.length = 4;
-            seemore=<SeeMore/>;
+            seemore=<SeeMore name={props.name}/>;
         }
     }
     return(
@@ -63,7 +63,7 @@ function StoryListWithTitle(props){
     return(
         <div className="result">
             <Title title={props.title} />
-            <StoryList stories = {props.stories} full={props.full} />
+            <StoryList stories = {props.stories} name={props.name} full={props.full} />
         </div>
     )
 }

@@ -8,6 +8,7 @@ import DetailStory from './component/detailstory'
 import { HashRouter as Router, Route, Link }  from 'react-router-dom'
 import Layout from './component/layout'
 import Home from './component/homepage'
+import CategoryPage from './component/categorypage'
 
 import '../public/css/main.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -22,6 +23,8 @@ ReactDOM.render(
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/detailstory/:id" component={DetailStory} />
+            <Route path="/truyen/:id" component={CategoryPage} />
+
         </div>
       </Layout>
      </Router>

@@ -13882,6 +13882,10 @@ var _homepage = __webpack_require__(294);
 
 var _homepage2 = _interopRequireDefault(_homepage);
 
+var _categorypage = __webpack_require__(316);
+
+var _categorypage2 = _interopRequireDefault(_categorypage);
+
 __webpack_require__(298);
 
 __webpack_require__(300);
@@ -13909,7 +13913,8 @@ _reactDom2.default.render(_react2.default.createElement(
         null,
         _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _homepage2.default }),
         _react2.default.createElement(_reactRouterDom.Route, { path: '/login', component: _login2.default }),
-        _react2.default.createElement(_reactRouterDom.Route, { path: '/detailstory/:id', component: _detailstory2.default })
+        _react2.default.createElement(_reactRouterDom.Route, { path: '/detailstory/:id', component: _detailstory2.default }),
+        _react2.default.createElement(_reactRouterDom.Route, { path: '/truyen/:id', component: _categorypage2.default })
       )
     )
   )
@@ -31795,10 +31800,30 @@ function SearchForm(props) {
 var Homepage = function (_React$Component) {
     _inherits(Homepage, _React$Component);
 
-    function Homepage() {
+    function Homepage(props) {
         _classCallCheck(this, Homepage);
 
-        return _possibleConstructorReturn(this, (Homepage.__proto__ || Object.getPrototypeOf(Homepage)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (Homepage.__proto__ || Object.getPrototypeOf(Homepage)).call(this, props));
+
+        _this.state = {
+            categories: [{
+                id: 1,
+                title: "Truyện mới nhất >",
+                stories: ["1", "2", "3", "4", "5", "6"],
+                slug: "truyen-moi-nhat"
+            }, {
+                id: 2,
+                title: "Truyện trinh thám >",
+                stories: ["1", "2", "3", "4", "5", "6"],
+                slug: "truyen-trinh-tham"
+            }, {
+                id: 3,
+                title: "Truyện lãng mạn >",
+                stories: ["1", "2", "3", "4", "5", "6", "7"],
+                slug: "truyen-lang-man"
+            }]
+        };
+        return _this;
     }
 
     _createClass(Homepage, [{
@@ -31808,7 +31833,7 @@ var Homepage = function (_React$Component) {
                 return _react2.default.createElement(
                     'div',
                     { key: index },
-                    _react2.default.createElement(_StoryList2.default, { title: category.title, stories: category.stories }),
+                    _react2.default.createElement(_StoryList2.default, { title: category.title, stories: category.stories, name: category.slug }),
                     ' ',
                     _react2.default.createElement('hr', null)
                 );
@@ -31895,54 +31920,56 @@ var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRouterDom = __webpack_require__(110);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //1 truyen
+/**
+ * Created by thuannd on 02/07/2017.
+ */
 function Story(props) {
     return _react2.default.createElement(
-        "div",
-        { className: "card" },
+        'div',
+        { className: 'card' },
         _react2.default.createElement(
-            "div",
-            { className: "card-thumb" },
+            'div',
+            { className: 'card-thumb' },
             _react2.default.createElement(
-                "a",
-                { href: "book-info.html" },
-                _react2.default.createElement("img", { className: "thumb", src: props.logo, alt: "Tot-to-chan" })
+                'a',
+                { href: 'book-info.html' },
+                _react2.default.createElement('img', { className: 'thumb', src: 'http://t0.gstatic.com/images?q=tbn:ANd9GcQhYjUIu2o5v5u3rfJpCq5Cz0Q9WK--XdYxai_N2d0ImohPiIOp', alt: 'Tot-to-chan' })
             )
         ),
         _react2.default.createElement(
-            "h1",
+            'h1',
             null,
             _react2.default.createElement(
-                "a",
-                { href: "" },
-                "Totto-chan"
+                'a',
+                { href: '' },
+                'Totto-chan'
             )
         ),
         _react2.default.createElement(
-            "h2",
+            'h2',
             null,
-            "15/12/2016 | 10/10"
+            '15/12/2016 | 10/10'
         )
     );
 }
 
 //nut xem them
-/**
- * Created by thuannd on 02/07/2017.
- */
 function SeeMore(props) {
     return _react2.default.createElement(
-        "div",
-        { className: "card" },
+        'div',
+        { className: 'card' },
         _react2.default.createElement(
-            "div",
-            { className: "card-see-more" },
+            'div',
+            { className: 'card-see-more' },
             _react2.default.createElement(
-                "button",
-                { className: "btn btn-success see-more", href: "" },
-                "SEE MORE >>>"
+                _reactRouterDom.Link,
+                { className: 'btn btn-success see-more', to: '/truyen/' + props.name },
+                'SEE MORE >>>'
             )
         )
     );
@@ -31951,7 +31978,7 @@ function SeeMore(props) {
 //category
 function Title(props) {
     return _react2.default.createElement(
-        "h1",
+        'h1',
         null,
         props.title
     );
@@ -31967,12 +31994,12 @@ function StoryList(props) {
     if (!props.full) {
         if (arrObj.length > 5) {
             arrObj.length = 4;
-            seemore = _react2.default.createElement(SeeMore, null);
+            seemore = _react2.default.createElement(SeeMore, { name: props.name });
         }
     }
     return _react2.default.createElement(
-        "div",
-        { className: "result" },
+        'div',
+        { className: 'result' },
         arrObj,
         seemore
     );
@@ -31982,10 +32009,10 @@ function StoryList(props) {
 function StoryListWithTitle(props) {
 
     return _react2.default.createElement(
-        "div",
-        { className: "result" },
+        'div',
+        { className: 'result' },
         _react2.default.createElement(Title, { title: props.title }),
-        _react2.default.createElement(StoryList, { stories: props.stories, full: props.full })
+        _react2.default.createElement(StoryList, { stories: props.stories, name: props.name, full: props.full })
     );
 }
 
@@ -32230,6 +32257,100 @@ exports.push([module.i, ".darktheme{\n  background-color: #eee\n}\n", ""]);
 
 // exports
 
+
+/***/ }),
+/* 316 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _StoryList = __webpack_require__(297);
+
+var _StoryList2 = _interopRequireDefault(_StoryList);
+
+__webpack_require__(295);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by thuannd on 02/07/2017.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+
+var Category = function (_React$Component) {
+    _inherits(Category, _React$Component);
+
+    function Category(props) {
+        _classCallCheck(this, Category);
+
+        var _this = _possibleConstructorReturn(this, (Category.__proto__ || Object.getPrototypeOf(Category)).call(this, props));
+
+        _this.state = {
+            stories: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+            title: "Truyen trinh tham"
+        };
+        return _this;
+    }
+
+    _createClass(Category, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: 'container' },
+                _react2.default.createElement(
+                    'div',
+                    { className: 'container' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'wrapper' },
+                        _react2.default.createElement(SearchForm, null),
+                        _react2.default.createElement(_StoryList2.default, {
+                            title: this.state.title,
+                            stories: this.state.stories,
+                            full: '1' })
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Category;
+}(_react2.default.Component);
+
+function SearchForm(props) {
+    return _react2.default.createElement(
+        'div',
+        { className: 'search-form' },
+        _react2.default.createElement('input', { type: 'text', placeholder: 'T\xECm ki\u1EBFm...' }),
+        _react2.default.createElement(
+            'a',
+            { href: '#!' },
+            _react2.default.createElement(
+                'i',
+                { className: 'material-icons' },
+                'search'
+            )
+        )
+    );
+}
+
+exports.default = Category;
 
 /***/ })
 /******/ ]);
