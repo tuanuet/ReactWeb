@@ -10,7 +10,7 @@ import { isAuthencation ,isNotAuthencation} from '../../action/authenticate'
 @connect((state)=> { return {}})
 class Header extends React.Component{
 
-  componentWillMount(){
+  componentDidMount(){
     request
       .get('/authentication')
       .end((err, res) =>{

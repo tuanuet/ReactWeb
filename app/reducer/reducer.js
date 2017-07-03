@@ -1,7 +1,7 @@
 const redux = require('redux');
 import list from './list'
 import auth from './authenticate'
-
-let reducer = redux.combineReducers({list,auth})
+import listChap from './list-chap'
+let reducer = redux.combineReducers({list,auth,listChap})
 
 export default reducer

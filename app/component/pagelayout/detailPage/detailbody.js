@@ -1,14 +1,4 @@
 import React from 'react'
-import '../../../public/css/detailstory.css'
-import request from 'superagent'
-
-function DetailBodyImageName() {
-  return(
-    <div className="row">
-      <h3 className="center-block col-md-4 detail-body-img-name text-center">Romeo and Julie</h3>
-    </div>
-  )
-}
 
 class DetailBodyImage extends React.Component{
   render(){
@@ -50,6 +40,13 @@ class DetailBodyDescription extends React.Component{
   }
 }
 
+function DetailBodyImageName() {
+  return(
+    <div className="row">
+      <h3 className="center-block col-md-4 detail-body-img-name text-center">Romeo and Julie</h3>
+    </div>
+  )
+}
 function Clearfix() {
   return (
     <div className="clearfix"></div>
@@ -67,53 +64,5 @@ class DetailBody extends React.Component{
     )
   }
 }
-let a = [
-  'Lorem Ipsum is simply dummy text of the printing',
-  'Lorem Ipsum is simply dummy text of the printing',
-  'Lorem Ipsum is simply dummy text of the printing',
-  'Lorem Ipsum is simply dummy text of the printing',
-  'Lorem Ipsum is simply dummy text of the printing',
-  'Lorem Ipsum is simply dummy text of the printing'
-]
-function DetailChapterItem(props) {
-  return(
-    <div className="detail-chaper-content-item"><a>{props.name}</a></div>
-  )
-}
-function DetailChapterList(props) {
-  let list = props.arr.map((item,i)=>{return (<DetailChapterItem key={i} name={item}/>)});
-  return(
-    <div>{list}</div>
-  )
-}
 
-class DetailChapter extends React.Component{
-  render(){
-    return(
-      <div className="detail-chaper col-md-offset-1">
-        <div className="detail-chaper-header "><h3>Danh sách các chương</h3></div>
-        <div className="detail-chaper-content">
-          <DetailChapterList arr={a}/>
-        </div>
-      </div>
-    )
-  }
-}
-
-class DetailStory extends React.Component {
-  componentWillMount(){
-    let { match } =this.props
-    request.get()
-  }
-  render(){
-
-    return(
-      <div>
-        <DetailBody />
-        <DetailChapter />
-      </div>
-    )
-  }
-}
-
-export default DetailStory
+export default DetailBody
