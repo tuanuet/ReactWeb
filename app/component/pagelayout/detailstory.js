@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../public/css/detailstory.css'
+import '../../../public/css/detailstory.css'
 import request from 'superagent'
 
 function DetailBodyImageName() {
