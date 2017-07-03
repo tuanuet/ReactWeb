@@ -5,7 +5,7 @@ import React from 'react'
 import {  NavLink } from 'react-router-dom'
 import request from 'superagent'
 import { connect } from 'react-redux'
-import { isAuthencation ,isNotAuthencation} from '../action/authenticate'
+import { isAuthencation ,isNotAuthencation} from '../../action/authenticate'
 
 @connect((state)=> { return {}})
 class Header extends React.Component{

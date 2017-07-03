@@ -6,7 +6,6 @@ import {Link } from 'react-router-dom'
 //1 truyen
 function Story(props){
     return(
-
         <div className="card">
             <div className="card-thumb">
                 <a href="book-info.html"><img className="thumb" src='http://t0.gstatic.com/images?q=tbn:ANd9GcQhYjUIu2o5v5u3rfJpCq5Cz0Q9WK--XdYxai_N2d0ImohPiIOp' alt="Tot-to-chan"/></a>

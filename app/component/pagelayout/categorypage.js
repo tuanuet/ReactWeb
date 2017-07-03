@@ -2,8 +2,8 @@
  * Created by thuannd on 02/07/2017.
  */
 import React from 'react';
-import StoryListWithTitle from './StoryList';
-import '../../public/css/homepage.css';
+import StoryListWithTitle from '../base/storylist';
+import '../../../public/css/homepage.css';
 
 
 class Category extends React.Component{

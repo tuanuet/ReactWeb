@@ -3,8 +3,8 @@
  */
 import React from 'react';
 
-import '../../public/css/homepage.css';
-import StoryListWithTitle from './StoryList'
+import '../../../public/css/homepage.css';
+import StoryListWithTitle from '../base/storylist'
 
 function SearchForm(props){
     return(
