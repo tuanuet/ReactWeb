@@ -6,7 +6,8 @@ let list = (state =_default,action) => {
     case 'ADD_ITEM_CHAP':
       return [...state,action.item]
     case 'ADD_All_CHAP':
-        return [...state,action.list]
+        console.log(action.list);
+        return [...state,...action.list]
     case 'DEL_ITEM_CHAP':
         return state.filter((e,i) => i != action.index)
     case 'DEL_ALL_CHAP':

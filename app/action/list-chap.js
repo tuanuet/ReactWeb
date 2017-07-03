@@ -8,11 +8,11 @@ function delAndAddAll(list) {
   return {type:'DEL_AND_ADD_ALL',list}
 }
 function addItem(item) {
-  return {type :'ADD',item}
+  return {type :'ADD_ITEM_CHAP',item}
 }
 
 function delItem(index) {
-  return {type: 'DEL',index}
+  return {type: 'DEL_ITEM_CHAP',index}
 }
 
 module.exports = {addItem , delItem ,addAllChap , delAndAddAll ,delAllChap}
