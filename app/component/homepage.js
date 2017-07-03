@@ -17,25 +17,6 @@ function SearchForm(props){
 
 
 class Homepage extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            categories: [
-                {
-                    title: "Truyện mới nhất >",
-                    stories: ["1", "2", "3", "4", "5", "6"]
-                },
-                {
-                    title: "Truyện trinh thám >",
-                    stories: ["1", "2", "3", "4", "5", "6"]
-                },
-                {
-                    title: "Truyện lãng mạn >",
-                    stories: ["1", "2", "3", "4", "5", "6", "7"]
-                }
-            ]
-        }
-    }
 
     render(){
         let array = this.state.categories.map((category, index)=>{

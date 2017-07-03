@@ -7,7 +7,7 @@ import Login from './component/login'
 import DetailStory from './component/detailstory'
 import { HashRouter as Router, Route, Link }  from 'react-router-dom'
 import Layout from './component/layout'
-import Home from './component/categorypage'
+import Home from './component/homepage'
 
 import '../public/css/main.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
