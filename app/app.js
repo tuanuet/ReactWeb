@@ -8,7 +8,7 @@ import DetailStory from './component/detailstory'
 import { HashRouter as Router, Route, Link }  from 'react-router-dom'
 import Layout from './component/layout'
 import Home from './component/homepage'
-
+import Infinite from './component/infinitescroll'
 import '../public/css/main.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../public/css/font-awesome.css'
@@ -22,6 +22,7 @@ ReactDOM.render(
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/detailstory/:id" component={DetailStory} />
+          <Route path="/infinite" component={Infinite} />
         </div>
       </Layout>
      </Router>
